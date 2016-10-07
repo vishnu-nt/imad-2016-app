@@ -5,19 +5,35 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-
-var articleone={
-    title:'article one| me',
-    heading:'article one',
-    date:'sep 5',
-    content: `<p>this is the contentthis is the contentthis is the contentthis is the contentthis is the contentthis is the         contentthis is the content
-          </p>
-          <p>
-          this is the contentthis is the contentthis is the contentthis is the contentthis is the contentthis is the contentthis is the content
-          </p>
-          <p>
-          this is the contentthis is the contentthis is the contentthis is the contentthis is the contentthis is the contentthis is the content
-          </p>`
+ var articles={
+                'article-one':{
+            title:'article one| me',
+            heading:'article one',
+            date:'sep 5',
+            content: `<p>this is the contentthis is the contentthis is the contentthis is the contentthis is the contentthis is the         contentthis is the content
+                  </p>
+                  <p>
+                  this is the contentthis is the contentthis is the contentthis is the contentthis is the contentthis is the contentthis is the content
+                  </p>
+                  <p>
+                  this is the contentthis is the contentthis is the contentthis is the contentthis is the contentthis is the contentthis is the content
+                          </p>`
+                },
+                'article-two':{
+                    title:'article two| me',
+                    heading:'article two',
+                    date:'sep 9',
+                    content: `<p>this is the contentthis is the contentthis is the contentthis is the contentthis is the contentthis is the         contentthis is the content
+                          </p>`
+                    
+                },
+                'article-three':{
+                    title:'article three| me',
+                    heading:'article three',
+                    date:'oct 9',
+                    content: `<p>this is the contentthis is the contentthis is the contentthis is the contentthis is the contentthis is the         contentthis is the content
+                          </p>`
+                    },
 };
 
 
@@ -64,14 +80,10 @@ app.get('/', function (req, res) {
 });
 
 
-app.get('/article-one',function (req,res){
-  res.send(createTemplate(articleone))});
+app.get(':/articleName',function (req,res){
+    var articleName=req.params.articleName;
+  res.send(createTemplate(articles[articleName]))});
 
-app.get('/article-two',function (req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'))});
-
-app.get('/article-three',function (req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-three.html'))});
 
 
 app.get('/ui/style.css', function (req, res) {
