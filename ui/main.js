@@ -4,7 +4,7 @@ element.innerHTML= 'new';
 var img = document.getElementById('madi');
 marginLeft=0;
 function moveright(){
-    marginLeft=marginLeft+1;
+    marginLeft = marginLeft + 10;
     img.marginLeft= 'px';
 }
 img.onclick = function() {
